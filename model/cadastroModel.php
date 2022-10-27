@@ -17,6 +17,7 @@ class Cadastro extends Banco
     private $telefone;
     private $cep;
     private $numero;
+    private $usuario_id;
 
     //Metodos Set
     public function setNome($string)
@@ -87,6 +88,11 @@ class Cadastro extends Banco
     public function setEstado($int)
     {
         $this->estado_id = $int;
+    }
+
+    public function setUser($usuario_id)
+    {
+        $this->usuario_id = $usuario_id;
     }
 
     //Metodos Get
@@ -160,6 +166,11 @@ class Cadastro extends Banco
         return $this->estado_id;
     }
 
+    public function getUser()
+    {
+        return $this->usuario_id;
+    }
+
     public function incluir()
     {
 
@@ -168,7 +179,7 @@ class Cadastro extends Banco
             $this->getSenha()
         );
 
-        if ($usuario == 3) {
+        if (empty($usuario)) {
             return 3;
         }
 
@@ -190,7 +201,8 @@ class Cadastro extends Banco
                 $this->getRg(),
                 $this->getDatanascimento(),
                 $this->getDatacadastro(),
-                $endereco
+                $endereco,
+                $usuario
             );
 
             if ($pessoas) {
