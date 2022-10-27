@@ -40,7 +40,7 @@ class ControllerCadastro
             $result = $this->cadastro->incluir();
 
             if ($result == 1) {
-                echo "<script>alert('Registro incluído com sucesso!');document.location='../view/cadastro.php'</script>";
+                echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php'</script>";
             } else if ($result == 0) {
                 echo "<script>alert('Erro ao gravar registro, verifique as informações.');history.back()</script>";
             } else {
