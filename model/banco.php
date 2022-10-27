@@ -89,6 +89,78 @@ class Banco
     }
 
     /**
+     * Função que atualiza o endereço
+     *
+     * @param [text] $cep
+     * @param [text] $endereco
+     * @param [text] $numero
+     * @param [int] $estado_id
+     * @param [int] $pessoa_id
+     * @return [bool]
+     */
+    public function updateEndereco($cep, $endereco, $numero, $estado_id, $pessoa_id)
+    {
+
+        $pessoa = $this->getPessoa($pessoa_id);
+
+        if (!empty($pessoa)) {
+            $stmt =  $this->mysqli->query("UPDATE `enderecos` SET `cep` = '$cep', 
+            `endereco` = '$endereco', `numero` = '$numero',`estado_id` = '$estado_id'
+            WHERE `id` = '" . $pessoa["endereco_id"] . "';");
+
+            if ($stmt) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    /**
+     * Função que atualiza o telefone
+     *
+     * @param [int] $pessoa_id
+     * @param [text] $telefone
+     * @return [bool]
+     */
+    public function updateTelefone($pessoa_id, $telefone)
+    {
+
+        $stmt =  $this->mysqli->query("UPDATE `telefones` SET `telefone` = '$telefone'
+            WHERE `pessoa_id` = '" . $pessoa_id . "';");
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Função para incluir pessoa no banco
+     *
+     * @param [text] $nome
+     * @param [text] $cpf
+     * @param [text] $rg
+     * @param [date] $data_nascimento
+     * @param [date] $data_atualizacao
+     * @param [int] $usuario_id
+     * @return [bool]
+     */
+    public function updatePessoa($nome, $cpf, $rg, $data_nascimento, $data_atualizacao, $usuario_id)
+    {
+        $stmt =  $this->mysqli->query("UPDATE `pessoas` SET `nome` = '$nome', `cpf` = '$cpf', `rg` = '$rg',
+            `data_nascimento` = '$data_nascimento', `data_atualizacao` = '$data_atualizacao'
+            WHERE `id` = '" . $usuario_id . "';");
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Função para cadastrar o usuário
      *
      * @param [text] $email
@@ -129,7 +201,7 @@ class Banco
 
             $result = $this->mysqli->query("SELECT p.nome, p.cpf, p.rg, p.data_nascimento,
                 p.data_cadastro, p.data_atualizacao, ende.cep, ende.endereco, ende.numero, 
-                est.uf AS estado, u.email, p.id
+                est.uf AS estado, u.email, p.id, t.telefone
                 FROM pessoas p
                 INNER JOIN enderecos ende ON ende.id = p.endereco_id
                 INNER JOIN estados est ON est.id = ende.estado_id
@@ -143,6 +215,32 @@ class Banco
                 $array[] = $row;
             }
             return $array;
+        } catch (\Throwable $th) {
+            return [];
+        }
+    }
+
+    /**
+     * Função para pegar as pessoas do banco
+     *
+     * @return [array]
+     */
+    public function getPessoa($id)
+    {
+        try {
+
+            $result = $this->mysqli->query("SELECT p.nome, p.cpf, p.rg, p.data_nascimento,
+                p.data_cadastro, p.data_atualizacao, ende.cep, ende.endereco, ende.numero, 
+                est.uf AS estado, u.email, p.id, ende.id as 'estado_id', t.telefone, ende.id as endereco_id
+                FROM pessoas p
+                INNER JOIN enderecos ende ON ende.id = p.endereco_id
+                INNER JOIN estados est ON est.id = ende.estado_id
+                INNER JOIN telefones t ON t.pessoa_id = p.id
+                INNER JOIN usuarios u ON u.id = p.usuario_id
+                WHERE p.data_exclusao IS null AND p.id = $id
+            ");
+
+            return $result->fetch_array(MYSQLI_ASSOC);
         } catch (\Throwable $th) {
             return [];
         }
@@ -172,20 +270,6 @@ class Banco
         $data_exclusao = date('Y-m-d H:i:s');
 
         if ($this->mysqli->query("UPDATE `pessoas` SET `data_exclusao` = '$data_exclusao' WHERE `id` = '" . $id . "';") == TRUE) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function updatePessoas($nome, $cpf, $rg, $data_nascimento, $data_atualizacao, $id)
-    {
-        $stmt = $this->mysqli->prepare(
-            "UPDATE `pessoas` SET `nome` = ?, `cpf` = ?, `data_nascimento` = ?, `data_atualizacao` = ? WHERE `id` = $id"
-        );
-
-        $stmt->bind_param("ssss", $nome, $cpf, $rg, $data_nascimento, $data_atualizacao);
-        if ($stmt->execute() == TRUE) {
             return true;
         } else {
             return false;

@@ -8,12 +8,12 @@
 
         <?php include("menu.php") ?>
 
-        <form method="post" action="../controller/ControllerCadastro.php" id="form" name="form" class="needs-validation" novalidate>
+        <form method="post" action="../controller/ControllerEditar.php" id="form" name="form" class="needs-validation" novalidate>
 
             <?php include("form.php") ?>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-success" id="cadastrar">Finalizar Cadastro</button>
+                <button type="submit" class="btn btn-success" id="cadastrar">Finalizar Edição</button>
             </div>
         </form>
     </div>
