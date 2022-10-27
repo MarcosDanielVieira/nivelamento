@@ -1,23 +1,37 @@
-# Projeto CRUD em PHP - Bootstrap, PDO & MySQL
+# CRUD-MVC-PHP
 
-Desenvolvimento de um simples projeto CRUD (agenda de contatos) utilizando o acesso a banco de dados com o MySQL e linguagem PHP.
+Crud em MVC e PHP
 
-## Assuntos Abordados no Desenvolvimento do Projeto:
+### Objetivo:
 
-- Acesso a banco de dados com o MySql
-- Otimização da conexão com o banco de dados através do PDO (PHP Data Object)
-- Uso de linguagens, como: JavaScript e CSS
-- Uso do framework Bootstrap para realização de um layout responsivo para o projeto.
+> Este desafio tem por objetivo avaliar a capacidade de compreensão, analise e práticas de desenvolvimento do candidato.
 
-## Configuração do Projeto:
+### Regras:
 
-- Executar a query pessoa.sql ou importar o arquivo no phpMyAdmin para criar a table necessária.
+> As regras abaixo devem ser seguidas ao cadastrar/editar uma pessoa:
+
+    - Não devem haver e-mail repetido
+
+    - Executar a query script.sql ou importar o arquivo no phpMyAdmin para criar a table necessária.
+
 - Editar o arquivo **banco.php**
 
-```
-$dbNome = 'nomeDaTable'
-$dbHost = 'nomeDoDominioOuIP:Porta'
-$dbUsuario = 'usuarioDoMysql'
-$dbSenha 'senhaDoUsuario'
+  - $dbNome = 'nomeDaTable'
+  - $dbHost = 'nomeDoDominioOuIP:Porta'
+  - $dbUsuario = 'usuarioDoMysql'
+  - $dbSenha 'senhaDoUsuario'
 
-```
+### Detalhes sobre o programa:
+
+1.  init.php são os arquivos de configurações do sistema
+2.  diretório "view" é onde fica todas as telas do sistema
+3.  diretório "controller" é onde fica fica as funcionalidades do sistema que interragem com o banco de dados
+4.  diretório "model" é onde fica os arquivos de conexão com o banco de dados
+
+No diretório "view" existem 3 páginas principais: editar.php, cadastro.php e index.php. a página head e menu são os escopos do HTML e Menu do sistemas respectivamente.
+
+No diretório "controller" estão os arquivos PHP que executam as funcionalidades do sistema.
+
+No diretório "model" estão os arquivos de conexão com o Banco de Dados
+
+O arquivo script.sql é o scrip em sql que cria o banco e a tabela.
