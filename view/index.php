@@ -41,7 +41,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $lista = new listarController();
+                        <?php $lista = new ControllerListar();
 
                         foreach ($lista->pessoas() as $value) { ?>
 
@@ -54,7 +54,7 @@
                                 <td class="text-center"> <?= $value['numero'] ?> </td>
                                 <td> <?= $value['estado'] ?> </td>
                                 <td class="quebrarTexto"> <?= $value['email'] ?> </td>
-                                <td> <?= date('d/m/Y H:m', strtotime($value['data_cadastro'])) ?> </td>
+                                <td> <?= date('d/m/Y H:i:s', strtotime($value['data_cadastro'])) ?> </td>
                                 <td>
                                     <a class='btn btn-warning mr-2 mb-2' href='editar.php?id=<?= $value['id'] ?>'>Editar</a>
                                     <a class='btn btn-danger mr-2 mb-2' href='../controller/ControllerDeletar.php?id=<?= $value['id'] ?>'>Excluir</a>

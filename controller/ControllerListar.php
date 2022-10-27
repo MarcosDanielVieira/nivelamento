@@ -2,7 +2,7 @@
 require_once("../model/banco.php");
 require_once("../helps/Niv_Functions.php");
 
-class ListarController
+class ControllerListar
 {
 
     public static function pessoas()

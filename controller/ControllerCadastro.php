@@ -31,7 +31,7 @@ class ControllerCadastro
             $this->cadastro->setCpf($_POST['cpf']);
             $this->cadastro->setRg($_POST['rg']);
             $this->cadastro->setDatanascimento($_POST['data_nascimento']);
-            $this->cadastro->setDatacadastro(date('Y-m-d H:m:s'));
+            $this->cadastro->setDatacadastro(date('Y-m-d H:i:s'));
 
             // Niv_Functions::_investiga(
             //     $this->cadastro
