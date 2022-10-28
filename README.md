@@ -45,7 +45,7 @@ O arquivo script.sql é o scrip em sql que cria o banco e a tabela.
 
 # Imagens utilziadas no sistema / Telas construidas
 
-    - http://localhost/nivelamento/img/webdec-home.png
-    - http://localhost/nivelamento/img/login.png
-    - http://localhost/nivelamento/img/cadastro.png
-    - http://localhost/nivelamento/img/editar.png
+    - https://github.com/MarcosDanielVieira/nivelamento/blob/main/img/webdec-home.png
+    - https://github.com/MarcosDanielVieira/nivelamento/blob/main/img/login.png
+    - https://github.com/MarcosDanielVieira/nivelamento/blob/main/img/cadastro.png
+    - https://github.com/MarcosDanielVieira/nivelamento/blob/main/img/editar.png
