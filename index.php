@@ -1,1 +1,1 @@
-<?php return header('Location: http://localhost/nivelamento/view/login.php');;
+<?php header('location: view/index.php');

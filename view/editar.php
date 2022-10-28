@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html>
+
 <?php include("head.php") ?>
+<?php include("logado.php"); ?>
 
 <body class="section">
 

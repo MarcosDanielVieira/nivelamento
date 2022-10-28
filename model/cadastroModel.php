@@ -259,4 +259,12 @@ class Cadastro extends Banco
             return false;
         }
     }
+
+    public function loginUsuario()
+    {
+        return $this->checklogin(
+            $this->getEmail(),
+            $this->getSenha()
+        );
+    }
 }

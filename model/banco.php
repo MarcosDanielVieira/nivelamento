@@ -11,6 +11,11 @@ class Banco
         $this->conexao();
     }
 
+    /**
+     * Função para conectar no banco
+     *
+     * @return [mysql]
+     */
     private function conexao()
     {
         $this->mysqli = new mysqli(BD_SERVIDOR, BD_USUARIO, BD_SENHA, BD_BANCO);
@@ -265,6 +270,12 @@ class Banco
         }
     }
 
+    /**
+     * Função para registrar a data que deletou no banco
+     *
+     * @param [int] $id
+     * @return [bool]
+     */
     public function deletePessoa($id)
     {
         $data_exclusao = date('Y-m-d H:i:s');
@@ -272,6 +283,24 @@ class Banco
         if ($this->mysqli->query("UPDATE `pessoas` SET `data_exclusao` = '$data_exclusao' WHERE `id` = '" . $id . "';") == TRUE) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    /**
+     * Função para pesquisar email e senha no banco
+     *
+     * @return [bool]
+     */
+    public function checklogin($email, $senha)
+    {
+        $result = $this->mysqli->query("SELECT * FROM usuarios  WHERE `email` = '" . $email . "' AND `senha` = '" . $senha . "';");
+
+        if ($result->fetch_array(MYSQLI_ASSOC)) {
+
+            return true;
+        } else {
+
             return false;
         }
     }
