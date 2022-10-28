@@ -7,6 +7,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
 
 <style>
     .quebrarTexto {
@@ -60,7 +61,6 @@
                                     <a class='btn btn-warning mr-2 mb-2' href='editar.php?id=<?= $value['id'] ?>'>Editar</a>
                                     <a class='btn btn-danger mr-2 mb-2' href='../controller/ControllerDeletar.php?id=<?= $value['id'] ?>'>Excluir</a>
                                 </td>
-
                             </tr>
 
                         <?php } ?>
@@ -73,30 +73,56 @@
         </div>
 
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('.table').DataTable({
-                language: {
-                    "url": "https://cdn.datatables.net/plug-ins/1.11.4/i18n/pt_br.json",
-                    searchPlaceholder: "Qualquer informação"
-                },
-                "paging": true,
-                "lengthChange": false,
-                "pageLength": 50,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "processing": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
 </body>
+
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+
+<script>
+    $(".table").DataTable({
+        language: {
+            url: "https://cdn.datatables.net/plug-ins/1.11.4/i18n/pt_br.json",
+            searchPlaceholder: "Qualquer informação",
+        },
+        paging: true,
+        lengthChange: false,
+        pageLength: 50,
+        searching: true,
+        ordering: true,
+        info: true,
+        processing: true,
+        autoWidth: false,
+        responsive: true,
+        dom: "Bfrtip",
+        buttons: [{
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [0, ':visible']
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+                }
+            },
+            'colvis'
+        ]
+    });
+</script>
 
 </html>
