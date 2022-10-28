@@ -35,3 +35,17 @@ No diretório "controller" estão os arquivos PHP que executam as funcionalidade
 No diretório "model" estão os arquivos de conexão com o Banco de Dados
 
 O arquivo script.sql é o scrip em sql que cria o banco e a tabela.
+
+# Login no sistema
+
+    - E-mail: nivelamento@webdecsistemas.com
+    - Senha: desafio_crud_nivelamento_2022
+
+    - url: http://localhost/nivelamento/view/login.php
+
+# Imagens utilziadas no sistema / Telas construidas
+
+    - http://localhost/nivelamento/img/webdec-home.png
+    - http://localhost/nivelamento/img/login.png
+    - http://localhost/nivelamento/img/cadastro.png
+    - http://localhost/nivelamento/img/editar.png
