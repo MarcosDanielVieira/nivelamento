@@ -1,5 +1,5 @@
 <?php
-if ($_GET['id']) {
+if (isset($_GET['id'])) {
     require_once("../controller/ControllerEditar.php");
     $controller = new ControllerEditar();
     $pessoa     = $controller->getPessoa($_GET['id']);

@@ -13,7 +13,7 @@
     }
 </style>
 
-<body>
+<body class="section">
 
     <div class="container">
 
