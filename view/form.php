@@ -98,23 +98,23 @@ if (isset($_GET['id'])) {
 
 <div class="form-row">
 
-    <div class="col-md-4 mb-3">
-        <label for="endereco">
-            Endereço
-            <i class="text-danger">*</i>
-        </label>
-        <input type="text" class="form-control" id="endereco" value="<?= !empty($pessoa) ? $pessoa['endereco'] : "" ?>" name="endereco" placeholder="Endereço" required>
-        <div class="invalid-feedback">
-            O campo não pode ficar vazio.
-        </div>
-    </div>
-
     <div class="col-md-2 mb-3">
         <label for="cep">
             CEP
             <i class="text-danger">*</i>
         </label>
         <input type="text" class="form-control cep" minlength="8" maxlength="8" id="cep" value="<?= !empty($pessoa) ? $pessoa['cep'] : "" ?>" name="cep" placeholder="CEP" required>
+        <div class="invalid-feedback">
+            O campo não pode ficar vazio.
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <label for="endereco">
+            Endereço
+            <i class="text-danger">*</i>
+        </label>
+        <input type="text" class="form-control" id="endereco" value="<?= !empty($pessoa) ? $pessoa['endereco'] : "" ?>" name="endereco" placeholder="Endereço" required>
         <div class="invalid-feedback">
             O campo não pode ficar vazio.
         </div>
@@ -140,7 +140,7 @@ if (isset($_GET['id'])) {
             <option value="">Selecione</option>
             <?php require_once("../controller/EstadoController.php");
             foreach (EstadoController::listaEstados() as $key => $value) { ?>
-                <option <?= !empty($pessoa) && $pessoa["estado_id"] == $value['id'] ? "selected" : "" ?> value="<?= $value['id'] ?>">
+                <option class="sigla_<?= $value['uf'] ?>" <?= !empty($pessoa) && $pessoa["estado_id"] == $value['id'] ? "selected" : "" ?> value="<?= $value['id'] ?>">
                     <?= $value['nome'] ?>
                 </option>
             <?php } ?>
