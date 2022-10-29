@@ -21,7 +21,6 @@ class LoginController
 
             if ($this->cadastro->loginUsuario()) {
                 // session_start inicia a sessão
-                session_destroy();
                 session_start();
                 $_SESSION['login'] = $this->cadastro->getEmail();
                 $_SESSION['senha'] = $this->cadastro->getSenha();
