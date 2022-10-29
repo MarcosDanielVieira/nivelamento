@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
 
+    <meta name="description" content="Este desafio tem por objetivo avaliar a capacidade de compreensão, analise e práticas de desenvolvimento do candidato.">
+    <meta name="theme-color" content="#282c34" />
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="../js/jquery.mask.js"></script>
     <script src="../js/main.js"></script>
