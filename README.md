@@ -40,8 +40,7 @@ O arquivo script.sql é o scrip em sql que cria o banco e a tabela.
 
     - E-mail: nivelamento@webdecsistemas.com
     - Senha: desafio_crud_nivelamento_2022
-
-    - url: http://localhost/nivelamento/view/login.php
+    - Site: https://nivelando.000webhostapp.com/view/login.php
 
 # Imagens utilziadas no sistema / Telas construidas
 
@@ -54,3 +53,16 @@ O arquivo script.sql é o scrip em sql que cria o banco e a tabela.
 <img src="https://github.com/MarcosDanielVieira/nivelamento/blob/main/img/cadastro.png">
 
 <img src="https://github.com/MarcosDanielVieira/nivelamento/blob/main/img/editar.png">
+
+# FTP
+
+    - Host: files.000webhost.com
+    - User: nivelando
+    - Pass: I*TRK*TJP@
+    - Porta: 21
+
+# Banco de dados
+
+    - Site: https://databases.000webhost.com
+    - User: id19785059_nivelamento2022
+    - Pass: ?$y$s1@ae?VA+Lfg

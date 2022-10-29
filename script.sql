@@ -14,30 +14,19 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Copiando estrutura do banco de dados para nivelamento
-CREATE DATABASE IF NOT EXISTS `nivelamento` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `nivelamento`;
-
--- Copiando estrutura para tabela nivelamento.enderecos
-CREATE TABLE IF NOT EXISTS `enderecos` (
+-- Copiando estrutura para tabela nivelamento.usuarios
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `estado_id` int NOT NULL,
-  `cep` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `endereco` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `numero` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
-  KEY `FK_enderecos_estados` (`estado_id`),
-  CONSTRAINT `FK_enderecos_estados` FOREIGN KEY (`estado_id`) REFERENCES `estados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `email` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `senha` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Copiando dados para a tabela nivelamento.enderecos: ~3 rows (aproximadamente)
-DELETE FROM `enderecos`;
-INSERT INTO `enderecos` (`id`, `estado_id`, `cep`, `endereco`, `numero`) VALUES
-	(8, 11, '39644-000', 'Rua Rodrigues Araújo', '60'),
-	(9, 9, '39600-000', 'Rua Rodrigues Araújo', '60'),
-	(10, 11, '39644-000', '969 Beco X', '123'),
-	(11, 19, '68909-143', '456 rua 22 de abril', '601');
+-- Copiando dados para a tabela nivelamento.usuarios: ~1 rows (aproximadamente)
+DELETE FROM `usuarios`;
+INSERT INTO `usuarios` (`id`, `email`, `senha`) VALUES
+	(12, 'marcosdaniel.developer@hotmail.com', '69c5fcebaa65b560eaf06c3fbeb481ae44b8d618'),
+	(13, 'nivelamento@webdecsistemas.com', '9f8a3f331cd577d8006cd914b45940faabef1e21');
 
 -- Copiando estrutura para tabela nivelamento.estados
 CREATE TABLE IF NOT EXISTS `estados` (
@@ -77,6 +66,27 @@ INSERT INTO `estados` (`id`, `uf`, `nome`) VALUES
 	(25, 'SE', 'Sergipe'),
 	(26, 'SP', 'São Paulo'),
 	(27, 'TO', 'Tocantins');
+
+-- Copiando estrutura para tabela nivelamento.enderecos
+CREATE TABLE IF NOT EXISTS `enderecos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `estado_id` int NOT NULL,
+  `cep` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `endereco` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `numero` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `FK_enderecos_estados` (`estado_id`),
+  CONSTRAINT `FK_enderecos_estados` FOREIGN KEY (`estado_id`) REFERENCES `estados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Copiando dados para a tabela nivelamento.enderecos: ~3 rows (aproximadamente)
+DELETE FROM `enderecos`;
+INSERT INTO `enderecos` (`id`, `estado_id`, `cep`, `endereco`, `numero`) VALUES
+	(8, 11, '39644-000', 'Rua Rodrigues Araújo', '60'),
+	(9, 9, '39600-000', 'Rua Rodrigues Araújo', '60'),
+	(10, 11, '39644-000', '969 Beco X', '123'),
+	(11, 19, '68909-143', '456 rua 22 de abril', '601');
+
 
 -- Copiando estrutura para tabela nivelamento.pessoas
 CREATE TABLE IF NOT EXISTS `pessoas` (
@@ -118,20 +128,6 @@ DELETE FROM `telefones`;
 INSERT INTO `telefones` (`id`, `pessoa_id`, `telefone`) VALUES
 	(3, 7, '(33) 98750-3588'),
 	(4, 8, '(21) 98164-2364');
-
--- Copiando estrutura para tabela nivelamento.usuarios
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `email` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `senha` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Copiando dados para a tabela nivelamento.usuarios: ~1 rows (aproximadamente)
-DELETE FROM `usuarios`;
-INSERT INTO `usuarios` (`id`, `email`, `senha`) VALUES
-	(12, 'marcosdaniel.developer@hotmail.com', '69c5fcebaa65b560eaf06c3fbeb481ae44b8d618'),
-	(13, 'nivelamento@webdecsistemas.com', '9f8a3f331cd577d8006cd914b45940faabef1e21');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
