@@ -304,4 +304,24 @@ class Banco
             return false;
         }
     }
+
+    /**
+     * Função para verificar se ja existe cpf no banco
+     *
+     * @param [text] $cpf
+     * @return [bool]
+     */
+    public function checkCPF($cpf)
+    {
+
+        $result = $this->mysqli->query("SELECT * FROM pessoas  WHERE `cpf` = '" . $cpf . "';");
+
+        if ($result->fetch_array(MYSQLI_ASSOC)) {
+
+            return true;
+        } else {
+
+            return false;
+        }
+    }
 }

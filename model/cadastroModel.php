@@ -174,89 +174,98 @@ class Cadastro extends Banco
     public function incluir()
     {
 
-        $usuario = $this->setUsuario(
-            $this->getEmail(),
-            $this->getSenha()
-        );
+        if ($this->checkCPF($this->getCpf())) {
+            return 4;
+        } else {
 
-        if (empty($usuario)) {
-            return 3;
-        }
-
-        $endereco = $this->setEndereco(
-            $this->getCep(),
-            $this->getEnderecos(),
-            $this->getNumero(),
-            $this->getEstado()
-        );
-
-        $pessoas    = 0;
-        $telefone   = 0;
-
-        if ($endereco) {
-
-            $pessoas = $this->setPessoas(
-                $this->getNome(),
-                $this->getCpf(),
-                $this->getRg(),
-                $this->getDatanascimento(),
-                $this->getDatacadastro(),
-                $endereco,
-                $usuario
+            $usuario = $this->setUsuario(
+                $this->getEmail(),
+                $this->getSenha()
             );
 
-            if ($pessoas) {
-                $telefone = $this->setTelefones(
-                    $pessoas,
-                    $this->getTelefone()
-                );
+            if (empty($usuario)) {
+                return 3;
             }
-        }
 
-        if ($endereco && $pessoas && $telefone) {
-            return true;
-        } else {
-            return false;
+            $endereco = $this->setEndereco(
+                $this->getCep(),
+                $this->getEnderecos(),
+                $this->getNumero(),
+                $this->getEstado()
+            );
+
+            $pessoas    = 0;
+            $telefone   = 0;
+
+            if ($endereco) {
+
+                $pessoas = $this->setPessoas(
+                    $this->getNome(),
+                    $this->getCpf(),
+                    $this->getRg(),
+                    $this->getDatanascimento(),
+                    $this->getDatacadastro(),
+                    $endereco,
+                    $usuario
+                );
+
+                if ($pessoas) {
+                    $telefone = $this->setTelefones(
+                        $pessoas,
+                        $this->getTelefone()
+                    );
+                }
+            }
+
+            if ($endereco && $pessoas && $telefone) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
     public function atualizar()
     {
+        if ($this->checkCPF($this->getCpf())) {
+            return 4;
+        } else {
 
-        $endereco = $this->updateEndereco(
-            $this->getCep(),
-            $this->getEnderecos(),
-            $this->getNumero(),
-            $this->getEstado(),
-            $this->getUser()
-        );
-
-        $pessoas    = 0;
-        $telefone   = 0;
-
-        if ($endereco) {
-
-            $pessoas = $this->updatePessoa(
-                $this->getNome(),
-                $this->getCpf(),
-                $this->getRg(),
-                $this->getDatanascimento(),
-                $this->getDataatualizacao(),
+            $endereco = $this->updateEndereco(
+                $this->getCep(),
+                $this->getEnderecos(),
+                $this->getNumero(),
+                $this->getEstado(),
                 $this->getUser()
             );
 
-            if ($pessoas) {
-                $telefone = $this->updateTelefone(
-                    $this->getUser(),
-                    $this->getTelefone()
-                );
-            }
-        }
+            $pessoas    = 0;
+            $telefone   = 0;
 
-        if ($endereco && $pessoas && $telefone) {
-            return true;
-        } else {
-            return false;
+            if ($endereco) {
+
+                $pessoas = $this->updatePessoa(
+                    $this->getNome(),
+                    $this->getCpf(),
+                    $this->getRg(),
+                    $this->getDatanascimento(),
+                    $this->getDataatualizacao(),
+                    $this->getUser()
+                );
+
+                if ($pessoas) {
+                    $telefone = $this->updateTelefone(
+                        $this->getUser(),
+                        $this->getTelefone()
+                    );
+                }
+            }
+
+            if ($endereco && $pessoas && $telefone) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
