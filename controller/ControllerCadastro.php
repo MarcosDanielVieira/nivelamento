@@ -36,10 +36,10 @@ class ControllerCadastro
             exit();
         }
 
-        if (!isset($_POST['cep']) || strlen($_POST['cep']) != 8 || empty($_POST['cep']) || !Niv_Functions::cpfValidate($_POST['cep'])) {
-            echo "<script>alert('CEP é inválido. Favor confirmar!');history.back()</script>";
-            exit();
-        }
+        // if (!isset($_POST['cep']) || strlen($_POST['cep']) != 8 || empty($_POST['cep']) || !Niv_Functions::cpfValidate($_POST['cep'])) {
+        //     echo "<script>alert('CEP é inválido. Favor confirmar!');history.back()</script>";
+        //     exit();
+        // }
 
         if (!isset($_POST['numero']) || empty($_POST['numero'])) {
             echo "<script>alert('Número vazio!');history.back()</script>";
