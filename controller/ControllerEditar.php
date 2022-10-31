@@ -33,11 +33,6 @@ class ControllerEditar
                 exit();
             }
 
-            if (!isset($_POST['cep']) || strlen($_POST['cep']) != 8 || empty($_POST['cep']) || !Niv_Functions::cpfValidate($_POST['cep'])) {
-                echo "<script>alert('CEP é inválido. Favor confirmar!');history.back()</script>";
-                exit();
-            }
-
             if (!isset($_POST['numero']) || empty($_POST['numero'])) {
                 echo "<script>alert('Número vazio!');history.back()</script>";
                 exit();
@@ -50,11 +45,6 @@ class ControllerEditar
 
             if (!isset($_POST['nome']) || empty($_POST['nome'])) {
                 echo "<script>alert('Nome vazio!');history.back()</script>";
-                exit();
-            }
-
-            if (!isset($_POST['cpf']) || !Niv_Functions::cpfValidate($_POST['cpf']) || empty($_POST['cpf'])) {
-                echo "<script>alert('CPF inválido!');history.back()</script>";
                 exit();
             }
 
