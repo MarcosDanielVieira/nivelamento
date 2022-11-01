@@ -101,8 +101,6 @@ class ControllerCadastro
             echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php'</script>";
         } else if ($result == 0) {
             echo "<script>alert('Erro ao gravar registro, verifique as informações.');history.back()</script>";
-        } else {
-            echo "<script>alert('Este e-mail já foi utilizado, tente outro por favor!');history.back()</script>";
         }
     }
 }

@@ -227,45 +227,41 @@ class Cadastro extends Banco
 
     public function atualizar()
     {
-        if ($this->checkCPF($this->getCpf())) {
-            return 4;
-        } else {
 
-            $endereco = $this->updateEndereco(
-                $this->getCep(),
-                $this->getEnderecos(),
-                $this->getNumero(),
-                $this->getEstado(),
+        $endereco = $this->updateEndereco(
+            $this->getCep(),
+            $this->getEnderecos(),
+            $this->getNumero(),
+            $this->getEstado(),
+            $this->getUser()
+        );
+
+        $pessoas    = 0;
+        $telefone   = 0;
+
+        if ($endereco) {
+
+            $pessoas = $this->updatePessoa(
+                $this->getNome(),
+                $this->getCpf(),
+                $this->getRg(),
+                $this->getDatanascimento(),
+                $this->getDataatualizacao(),
                 $this->getUser()
             );
 
-            $pessoas    = 0;
-            $telefone   = 0;
-
-            if ($endereco) {
-
-                $pessoas = $this->updatePessoa(
-                    $this->getNome(),
-                    $this->getCpf(),
-                    $this->getRg(),
-                    $this->getDatanascimento(),
-                    $this->getDataatualizacao(),
-                    $this->getUser()
+            if ($pessoas) {
+                $telefone = $this->updateTelefone(
+                    $this->getUser(),
+                    $this->getTelefone()
                 );
-
-                if ($pessoas) {
-                    $telefone = $this->updateTelefone(
-                        $this->getUser(),
-                        $this->getTelefone()
-                    );
-                }
             }
+        }
 
-            if ($endereco && $pessoas && $telefone) {
-                return true;
-            } else {
-                return false;
-            }
+        if ($endereco && $pessoas && $telefone) {
+            return true;
+        } else {
+            return false;
         }
     }
 
